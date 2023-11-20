@@ -1,0 +1,250 @@
+:root{
+    --sunradius: 300px;
+    --earthradius:50px;
+    --marsradius: calc((var(--earthradius)/2));
+    --mercuryradius: calc(var(--earthradius)/3);
+    --venusradius: calc(var(--earthradius) - 10px);
+    --jupiterradius: calc(var(--earthradius)*3);
+    --saturnradius: calc(var(--earthradius)*2.5);
+    --uranusradius: calc(var(--earthradius)*1.4);
+    --neptuneradius: calc(var(--earthradius)*1.6);
+
+    /*DURATION OF TRASLATION*/
+    --mercuryTras:8.8s;
+    --venusTras: calc(225 * var(--mercuryTras) / 88);
+    --earthTras: calc(365 * var(--mercuryTras) / 88);
+    --marsTras: calc(687 * var(--mercuryTras) / 88);
+    --jupiterTras: calc(4329 * var(--mercuryTras) / 88);
+    --saturnTras: calc(10753 * var(--mercuryTras) / 88);
+    --uranusTras: calc(30664 * var(--mercuryTras) / 88);
+    --neptuneTras: calc(60158 * var(--mercuryTras) / 88);
+
+}
+
+@keyframes traslation {
+    from {rotate: 0deg;}
+    to {rotate: 360deg;}
+}
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    color:#FFF;
+    transition:transform .5s ease-in-out;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    background-image:url("/assets/img/Space.avif");
+    background-repeat: repeat;
+}
+
+#space {
+    background-color: rgba(0, 0, 0, .5);
+    height: 100vh;
+    width: 100vw;
+}
+
+
+/******************  ORBITS  ***************/
+
+.orbit{
+    animation: traslation linear infinite;
+    position: absolute;
+    top:calc(50%);
+}
+
+/*******************    SUN     ******************/
+
+.sun-container{
+    position: absolute;
+    left: calc(50% - var(--sunradius)/2);
+    top:calc(50% - var(--sunradius)/2 - 16px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.sun{
+    border-radius: 100%;
+    width: var(--sunradius);
+    animation: traslation 20s linear infinite;
+    &:hover{
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+}
+
+
+/****************** PLANETS ******************/
+
+.planet-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    -webkit-text-stroke-width: .3px;
+    -webkit-text-stroke-color: black;
+    animation: traslation linear infinite reverse;
+}
+
+.planet{
+    border-radius: 100%;
+}
+
+.planet:hover{
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.planet-name{
+    transition: all .8s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+}
+
+.sun-container .planet-name{
+    font-size:3rem;
+}
+
+.planet:hover + .planet-name, .sun:hover + .planet-name{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(50%);
+}
+
+/*************  MERCURY ***********/
+
+.mercury.orbit{
+    animation-duration: var(--mercuryTras);
+    width: calc(var(--sunradius) + 170px);
+    left:calc(50% - calc(var(--sunradius) + 170px)/2);
+}
+
+img.mercury{
+    width:var(--mercuryradius);
+}
+
+.mercury.planet-container{
+    animation-duration: var(--mercuryTras);
+    right: 0;
+}
+
+/*************  VENUS   ***********/
+
+.venus.orbit{
+    animation-duration: var(--venusTras);
+    left:calc(50% - calc(var(--sunradius) + 300px)/2);
+    width: calc(var(--sunradius) + 300px);
+}
+
+img.venus{
+    width: var(--venusradius);
+}
+
+.venus.planet-container{
+    animation-duration: var(--venusTras);
+}
+
+/*************  EARTH   ***********/
+
+.earth.orbit{
+    animation-duration: var(--earthTras);
+    left:calc(50% - calc(var(--sunradius) + 500px)/2);
+    width: calc(var(--sunradius) + 500px);
+}
+
+img.earth{
+    width: var(--earthradius);
+}
+
+.earth.planet-container{
+    animation-duration: var(--earthTras);
+    right: 0;
+}
+
+/*************  MARS   ***********/
+
+.mars.orbit{
+    animation-duration: var(--marsTras);
+    left:calc(50% - calc(var(--sunradius) + 700px)/2);
+    width: calc(var(--sunradius) + 700px);
+}
+
+img.mars{
+    width: var(--marsradius);
+}
+
+.mars.planet-container{
+    animation-duration: var(--marsTras);
+}
+
+/*************  JUPITER   ***********/
+.jupiter.orbit{
+    animation-duration: var(--jupiterTras);
+    left:calc(50% - calc(var(--sunradius) + 1100px)/2);
+    width: calc(var(--sunradius) + 1100px);
+}
+
+img.jupiter{
+    width: var(--jupiterradius);
+}
+
+.jupiter.planet-container{
+    animation-duration: var(--jupiterTras);
+    right: 0;
+}
+
+/*************  SATURN   ***********/
+
+.saturn.orbit{
+    animation-duration: var(--saturnTras);
+    left:calc(50% - calc(var(--sunradius) + 1700px)/2);
+    width: calc(var(--sunradius) + 1700px);
+}
+
+img.saturn{
+    height: var(--saturnradius);
+}
+
+.saturn.planet-container{
+    animation-duration: var(--saturnTras);
+}
+
+
+/*************  URANUS   ***********/
+
+.uranus.orbit{
+    animation-duration: var(--uranusTras);
+    left:calc(50% - calc(var(--sunradius) + 1950px)/2);
+    width: calc(var(--sunradius) + 1950px);
+}
+
+img.uranus{
+    height: var(--uranusradius);
+}
+
+.uranus.planet-container{
+    animation-duration: var(--uranusTras);
+    right: 0;
+}
+
+/*************  NEPTUNE   ***********/
+
+.neptune.orbit{
+    animation-duration: var(--neptuneTras);
+    left:calc(50% - calc(var(--sunradius) + 2200px)/2);
+    width: calc(var(--sunradius) + 2200px);
+}
+
+img.neptune{
+    height: var(--neptuneradius);
+}
+
+.neptune.planet-container{
+    animation-duration: var(--neptuneTras);
+}
