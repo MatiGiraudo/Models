@@ -11,11 +11,11 @@
     --neptuneradius: calc(var(--earthradius)*1.6);
 
     /********* DURATION OF TRANSLATION *********/
-    --mercuryTras:8.8s;                                 /* I based it on the actual days it takes for Mercury to orbit the sun. */
+    --mercuryTras:8.8s;                                 /* I based on the actual days it takes for Mercury to orbit the sun. */
     --venusTras: calc(225 * var(--mercuryTras) / 88); 
     --earthTras: calc(365 * var(--mercuryTras) / 88);  
-    --marsTras: calc(687 * var(--mercuryTras) / 88);/* Then i used the actual days of each planet multiplying by the time that i setted to*/
-    --jupiterTras: calc(4329 * var(--mercuryTras) / 88);/* mercury and divided by his actual days. That gives the time for each animation. */
+    --marsTras: calc(687 * var(--mercuryTras) / 88);/* Then I used the actual days of each planet by multiplying the time that I set to*/
+    --jupiterTras: calc(4329 * var(--mercuryTras) / 88);/* mercury and divided by his actual days. That results in the time for each animation. */
     --saturnTras: calc(10753 * var(--mercuryTras) / 88);
     --uranusTras: calc(30664 * var(--mercuryTras) / 88);
     --neptuneTras: calc(60158 * var(--mercuryTras) / 88);
@@ -62,7 +62,7 @@ body{
 
 .sun-container{
     position: absolute;
-    left: calc(50% - var(--sunradius)/2);           /* That's the way that i used to center the sun*/
+    left: calc(50% - var(--sunradius)/2);           /* That's the way that I used to center the sun*/
     top:calc(50% - var(--sunradius)/2 - 16px);      /****************************************************/
     display: flex;
     flex-direction: column;
@@ -75,7 +75,7 @@ body{
     width: var(--sunradius);
     animation: translation 20s linear infinite;
     &:hover{
-        transform: scale(1.1); /* Setting a specific scale value 'cause the sun is the bigger element*/
+        transform: scale(1.1); /* Setting an specific scale value 'cause the sun is the bigger element*/
         cursor: pointer;
     }
 }
@@ -110,7 +110,7 @@ body{
 }
 
 .sun-container .planet-name{
-    font-size:3rem; /* Again specifing properties to the sun by his size */
+    font-size:3rem; /* Again specifying properties to the sun by his size */
 }
 
 .planet:hover + .planet-name, .sun:hover + .planet-name{
@@ -123,8 +123,8 @@ body{
 
 .mercury.orbit{
     animation-duration: var(--mercuryTras); /*Setting the translation duration*/
-    width: calc(var(--sunradius) + 170px); /*Size to achieve good centering depending on the planet.*/
-    left:calc(50% - calc(var(--sunradius) + 170px)/2);/*Properties to achieve the good centering*/
+    width: calc(var(--sunradius) + 170px); /*Size to achieve good centered depending on the planet.*/
+    left:calc(50% - calc(var(--sunradius) + 170px)/2);/*Properties to achieve the good centered*/
 }
 
 img.mercury{
